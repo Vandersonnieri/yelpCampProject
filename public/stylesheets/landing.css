@@ -1,0 +1,102 @@
+body {
+	background-color: #000;
+}
+
+#landingHeader a {
+	text-decoration: none;
+	padding: 20px;
+	background: rgba(255, 83, 15, 0.9);
+	border-radius: 13px;
+	color: white;
+}
+
+#landingHeader {
+	z-index: 1; /*moves forward anything less than 1*/
+	position: relative;
+	text-align: center;
+	padding-top: 30vh;
+}
+
+h1	{
+	font-size: 40px;
+	color: white;
+	margin-bottom: 40px;
+}
+
+.slideshow {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0; /* behind*/
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.slideshow li {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-size: cover; /*image take all page*/
+	background-position: 50% 50%; /*center picture in page*/
+	background-repeat: no-repeat; /*pictutes don;t reapeat*/
+	opacity: 0;
+	z-index: 0;
+	animation: imageAnimation 50s linear infinite; /*need to setup animation*/
+}
+
+/*putting images on ul lis*/
+.slideshow li:nth-child(1) { 
+  background-image: url(http://i.imgur.com/K3mPv14.jpg); 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  animation-delay: 7s; /*create a fade in effect one after another*/
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 14s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  animation-delay: 21s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+  animation-delay: 28s; 
+}
+
+/*setting up imageAnimation*/
+@keyframes imageAnimation {
+	/*frame from 0 to 100%*/
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in; /*smothe the transition*/
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
+
+
+
+
+
+

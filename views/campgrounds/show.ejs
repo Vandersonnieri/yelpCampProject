@@ -1,0 +1,40 @@
+<%- include ("../partials/header") %>
+
+	<div class="showContainer">
+		<img src="<%=campground.image%>">
+		<div id="showInfo">
+			<div id="titleDiv">
+				<h1><%=campground.name%></h1>
+				<% if(currentUser && campground.author.id.equals(currentUser._id)) {%>
+								<a id="showButton" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+						<% } %>
+			</div>
+			<p id="showDescription"><%=campground.description%></p>
+		</div>
+	</div>
+
+
+		<p>Submited by <%=campground.author.username%> <span>price $<%=campground.price%>/night</span></p>
+
+<div>
+	<button><a href="/campgrounds/<%=campground._id%>/comments/new">Add a Comment</a></button>
+
+	<h3>Comments:</h3>
+
+	<%campground.comments.forEach(comment => {%>
+		<p><%=comment.author.username%> - <%=comment.text%></p>
+
+		<%if (currentUser && comment.author.id.equals(currentUser._id)) {%>
+			<form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+				<button>Delete Comment</button>
+			</form>
+
+			<button><a href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a></button>
+		<%}%>
+	<%})%>
+</div>
+
+<br>
+
+<button><a href="/campgrounds">Back</a></button>
+<%- include ("../partials/footer") %>

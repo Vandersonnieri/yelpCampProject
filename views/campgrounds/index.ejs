@@ -1,0 +1,35 @@
+<%- include("../partials/header")%>
+
+<ul id="rotation">
+	<%campgrounds.forEach(campground => { %>
+	<li style="background-image: url(<%=campground.image%>)"></li>
+	<%})%>
+</ul>
+
+<div class="jumboDiv">
+	<h1 class="jumboTitle">Locate Campgrounds Around the World</h1>
+	<a class="indexButton" href="/campgrounds/new">Create Campground</a>
+</div>
+
+<div class="campContainer">
+	<%for(i = 0; i < 3; i++) {%>
+
+		<div class="campDiv">
+
+			<div id="camp1">
+				<img src="<%=campgrounds[i].image%>">
+			</div>
+
+			<div id="camp2">
+				<a class="campTitle" href="/campgrounds/<%=campgrounds[i]._id%>"><%=campgrounds[i].name%></a>
+				<div id="camp3">
+					<a class="campButton" href="/campgrounds/<%=campgrounds[i]._id%>">More info</a>
+				</div>
+			</div>
+
+
+		</div>
+	<%}%>
+</div>
+
+<%- include ("../partials/footer")%>

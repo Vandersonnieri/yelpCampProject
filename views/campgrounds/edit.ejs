@@ -1,0 +1,23 @@
+<%- include ("../partials/header")%>
+
+<div class="newCampForm">
+	<h1>Edit <%=campground.name%> Camp</h1>
+
+	<form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
+		<input type="text" name="campground[name]" value="<%=campground.name%>">
+		<input type="text" name="campground[image]" value="<%=campground.image%>">
+		<input type="number" name="campground[price]" value="<%=campground.price%>" min="0.01" step="0.01">
+		<textarea class="newCampDescription" name="campground[description]"><%=campground.description%></textarea>
+		<button>Submit</button>
+	</form>
+</div>
+
+<%if (currentUser, campground.author.id.equals(currentUser._id)) {%>
+	<form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+		<button>Delete Campground</button>
+	</form>
+<% } %>
+<br>
+<button><a href="/campgrounds">Back</a></button>
+
+<%- include ("../partials/footer")%>

@@ -1,0 +1,1 @@
+$("#flashDiv").fadeIn(300);
